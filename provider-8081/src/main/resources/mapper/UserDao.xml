@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wei.dao.UserDao">
+<!---->
+   <select id="getList"  resultType="User">
+      SELECT * FROM user
+   </select>
+    <select id="getUserById"  parameterType="string" resultType="User">
+      SELECT * FROM user WHERE id = #{id}
+   </select>
+    <delete id="delUserById"  parameterType="string" >
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+    <insert id="addUser" parameterType="User" >
+        INSERT INTO user(name,nickname) VALUES (#{name},#{nickName})
+    </insert>
+    <update id="updateUser" parameterType="User" >
+       UPDATE user SET name = #{name},nickName = #{nickName}
+        where id = #{id}
+    </update>
+</mapper>
